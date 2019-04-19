@@ -1,15 +1,12 @@
 (function (window) {
   'use strict';
 
-  var $titles = $['#title'];
-
   // Variables that piont to the html ids
   var tit = '[data-posts="title"]';
   var bod = '[data-posts="body"]';
   var com = '[data-comments="body"]';
   var name = '[data-comments="name"]';
   var email = '[data-comments="email" ]';
-  var reff = '[href="mailto:Presley.Mueller@myrl.com"]';
 
   // Ajax to get the posts from server 
   //and loading them dynamicly to the html
@@ -24,7 +21,7 @@
           $(tit).append(item.title);
           $(bod).append(item.body);
         }
-        else if (item.userId == 2 && item.id == 2) {
+       else if (item.userId == 2 && item.id == 2) {
           $(tit).append(item.title);
           $(bod).append(item.body);
         } 
@@ -43,14 +40,13 @@
         console.log(item.userId);
         if (item.postId == 1 && item.id == 1 ) {
           $(com).append(item.body);
-          $(name).append(item.name);
-          $(email).append('<a data-comments="email" href="' 
-                  + item.email +'">'+ item.name + '</a>');
+          $(name).append('<a data-comments="email" href="' 
+                + item.email +'">'+ item.name + '</a>');
         }
         else if (item.postId == 2 && item.id == 2) {
           $(com).append(item.body);
           $(email).append('<a data-comments="email" href="' 
-          + item.email +'">'+ item.name + '</a>');
+                + item.email +'">'+ item.name + '</a>');
         } 
       });
     }
