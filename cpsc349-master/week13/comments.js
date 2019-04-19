@@ -3,6 +3,7 @@
 
   var $titles = $['#title'];
 
+  // Variables that piont to the html ids
   var tit = '[data-posts="title"]';
   var bod = '[data-posts="body"]';
   var com = '[data-comments="body"]';
@@ -10,6 +11,8 @@
   var email = '[data-comments="email" ]';
   var reff = '[href="mailto:Presley.Mueller@myrl.com"]';
 
+  // Ajax to get the posts from server 
+  //and loading them dynamicly to the html
   $.ajax({
     type: 'GET',
     url: 'https://jsonplaceholder.typicode.com/posts',
@@ -29,6 +32,8 @@
     }
   });
 
+  // Ajax to get the comment information 
+  //from server and loading them dynamicly to the html
   $.ajax({
     type: 'GET',
     url: 'https://jsonplaceholder.typicode.com/comments?postId=1',
@@ -39,23 +44,17 @@
         if (item.postId == 1 && item.id == 1 ) {
           $(com).append(item.body);
           $(name).append(item.name);
-          $(email).append(item.email);
+          $(email).append('<a data-comments="email" href="' 
+                  + item.email +'">'+ item.name + '</a>');
         }
-        else if (item.userId == 2 && item.id == 2) {
+        else if (item.postId == 2 && item.id == 2) {
           $(com).append(item.body);
+          $(email).append('<a data-comments="email" href="' 
+          + item.email +'">'+ item.name + '</a>');
         } 
       });
     }
   });
-
-
-  $.ajax({
-    type: 'GET',
-    
-  })
-
-
-
 
   const BUTTON_SELECTOR = '[data-posts="id"]';
 
